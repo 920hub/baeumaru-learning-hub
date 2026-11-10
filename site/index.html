@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f8fa">
+  <meta name="description" content="배움마루에서 여행 일본어를 익히고 하루의 조각을 기록하세요. 작은 배움을 모으는 나만의 도구 모음.">
+  <title>배움마루 — 오늘의 발견</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module" src="assets/hub.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="배움마루 홈"><img src="assets/mark.svg" alt="" width="30" height="30">배움마루<span>작은 배움의 모음</span></a>
+    <form class="search" role="search" id="search-form"><label for="search">도구 검색</label><div class="search-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="검색" autocomplete="off"></div></form>
+    <nav class="primary-nav" aria-label="라이브러리"><p class="nav-label">둘러보기</p><button class="nav-item active" data-view="all" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>오늘의 발견</button><button class="nav-item" data-view="favorites"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/></svg>즐겨찾기</button></nav>
+    <div class="sidebar-bottom"><span class="tiny-mark">b.</span><p>호기심이 머무는 곳.<br>당신의 속도로 배워요.</p></div>
+  </aside>
+  <main id="main" tabindex="-1">
+    <header class="page-heading"><div><p class="eyebrow">YOUR EVERYDAY COLLECTION</p><h1 id="view-title">오늘의 발견</h1></div><span class="edition">배움마루<br><strong>VOL. 01</strong></span></header>
+    <section class="hero" aria-labelledby="hero-title" id="hero"><div class="hero-copy"><span class="hero-kicker">새로운 한 걸음</span><h2 id="hero-title">낯선 곳에서도,<br>나답게 한마디.</h2><p>일본 여행의 설렘에 자신감을 더해요.<br>인사부터 시작하는 가벼운 일본어 연습.</p><a class="button button-light" href="apps/japanese/">여행 연습 시작하기 <span aria-hidden="true">↗</span></a><span class="hero-footnote">6개의 정거장 · 가입 없이 바로 시작</span></div><img src="assets/journey.svg" alt="붉은 태양과 산, 작은 길을 그린 여행 포스터" width="600" height="600"></section>
+    <section class="collection" aria-labelledby="collection-title"><div class="section-heading"><div><p class="eyebrow">PICK YOUR NEXT CHAPTER</p><h2 id="collection-title">지금, 나를 위한 도구</h2></div><span id="tool-count" class="muted"></span></div><div class="filter-row" id="categories" aria-label="도구 분류"></div><p class="sr-only" id="result-status" role="status"></p><div class="tool-grid" id="tool-grid"></div><p id="empty" class="empty" hidden>아직 발견하지 못했네요.<br>다른 검색어를 쓰거나 분류를 바꿔 보세요.</p><p class="storage-message" id="storage-message" role="status"></p></section>
+    <section class="editorial" aria-labelledby="editorial-title"><img src="assets/orbit.svg" alt="" width="160" height="160" loading="lazy"><div><p class="eyebrow">A LITTLE, EVERY DAY</p><h2 id="editorial-title">대단한 시작보다,<br>계속되는 작은 순간.</h2><p>한마디를 익히고, 하루를 돌아보고.<br>배움마루는 일상에 놓아두는 작은 배움의 서랍이에요.</p></div><span class="editorial-number" aria-hidden="true">01—∞</span></section>
+    <footer><a href="./">배움마루</a><p>즐겨찾기와 학습 진도는 이 브라우저에만 저장돼요.<br>일기장은 별도의 Google 로그인과 Firebase 저장을 사용해요.</p><span><a href="privacy.html">데이터 안내</a> · 매일 조금씩, 나의 속도로.</span></footer>
+    <noscript><p class="empty">도구 검색에는 JavaScript가 필요해요. <a href="apps/japanese/">일본 여행 첫걸음</a> · <a href="apps/diary/">하루의 조각</a></p></noscript>
+  </main>
+</body>
+</html>

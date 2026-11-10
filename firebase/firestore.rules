@@ -1,0 +1,56 @@
+// Prototype Security Rules: users/{uid}/entries/{entryId}.
+// Required fields: date (YYYY-MM-DD), title (1..120), content (1..100000),
+// mood (happy/calm/neutral/sad/tired), favorite (bool),
+// createdAt (immutable server timestamp), updatedAt (server timestamp).
+// Ownership comes only from the authenticated UID in the document path.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null
+        && request.auth.uid == uid
+        && request.auth.token.email_verified == true
+        && request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+    function validCalendarDate(value) {
+      let year = int(value[0:4]);
+      let month = int(value[5:7]);
+      let day = int(value[8:10]);
+      let parsed = timestamp.date(year, month, day);
+      return year >= 1 && parsed.year() == year && parsed.month() == month && parsed.day() == day;
+    }
+    function nonBlank(value) {
+      // ECMAScript String.trim whitespace, including NBSP, U+3000 and BOM.
+      return value.replace('[\\x{0009}-\\x{000D}\\x{0020}\\x{00A0}\\x{1680}\\x{2000}-\\x{200A}\\x{2028}\\x{2029}\\x{202F}\\x{205F}\\x{3000}\\x{FEFF}]', '').size() > 0;
+    }
+    function validEntry(data) {
+      let fields = ['date', 'title', 'content', 'mood', 'favorite', 'createdAt', 'updatedAt'];
+      return data.keys().hasAll(fields) && data.keys().hasOnly(fields)
+        && data.date is string
+        && data.date.matches('^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')
+        && validCalendarDate(data.date)
+        && data.title is string && data.title.size() <= 120 && nonBlank(data.title)
+        && data.content is string && data.content.size() <= 100000 && nonBlank(data.content)
+        && data.mood in ['happy', 'calm', 'neutral', 'sad', 'tired']
+        && data.favorite is bool
+        && data.createdAt is timestamp && data.updatedAt is timestamp;
+    }
+    match /users/{uid}/entries/{entryId} {
+      allow get: if isOwner(uid);
+      allow list: if isOwner(uid) && request.query.limit != null && request.query.limit <= 100;
+      allow create: if isOwner(uid)
+        && entryId.matches('^[A-Za-z0-9_-]{1,128}$')
+        && validEntry(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if isOwner(uid)
+        && validEntry(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if isOwner(uid);
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

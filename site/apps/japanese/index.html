@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fcfaf9">
+  <meta name="description" content="가입 없이 배우는 여섯 단계 여행 일본어. 표현과 읽기를 익히고, 24개의 짧은 상황 문제로 연습해요.">
+  <title>일본 여행 첫걸음 — 배움마루</title>
+  <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body class="japanese-page">
+  <a class="skip-link" href="#lesson">학습으로 건너뛰기</a>
+  <header class="app-header"><a href="../../" class="app-brand"><img src="../../assets/mark.svg" alt="" width="26" height="26">배움마루<span aria-hidden="true"> / </span><span>일본 여행 첫걸음</span></a><div class="xp" id="xp" aria-label="획득 경험치">0 XP</div></header>
+  <main class="learning-main">
+    <section class="learning-heading"><div><p class="eyebrow">A SMALL JOURNEY, ONE PHRASE AT A TIME</p><h1>여행을 여는<br class="mobile-break"> 작은 한마디.</h1><p class="intro">완벽하지 않아도 괜찮아요.<br>여섯 정거장, 스물네 번의 연습으로 가볍게 출발해요.</p></div><div class="mini-cover"><img src="../../assets/journey.svg" alt="" width="170" height="170"><span>日本への第一歩</span></div></section>
+    <div class="journey-summary"><span id="summary">6개의 정거장 중 0개 완료</span><progress id="total-progress" value="0" max="24" aria-label="전체 학습 진도"></progress><span class="local-badge">이 기기에 저장</span></div>
+    <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
+    <div class="learning-layout"><nav class="stage-navigation" aria-label="학습 단계"><h2>나의 여행 코스</h2><ol id="stage-list"></ol><p class="course-note">앞 정거장을 마치면<br>다음 여행지가 열려요.</p></nav><section class="lesson" id="lesson" tabindex="-1" aria-labelledby="lesson-title"></section></div>
+    <footer class="learning-footer"><div><strong>나의 속도로, 부담 없이.</strong><p>이름·학번·로그인 없이 이용해요. 진도는 이 브라우저에만 저장되며 전송되지 않아요.<br>브라우저 데이터를 지우면 진도도 사라져요. 기기 간 진도 동기화는 지원하지 않아요.</p></div><button class="reset-button" id="reset" type="button">학습 진도 초기화</button></footer>
+    <noscript><p class="empty">일본어 연습에는 JavaScript가 필요해요. 브라우저 설정에서 허용한 뒤 새로고침해 주세요.</p></noscript>
+  </main>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">처음부터 다시 시작할까요?</h2><p>이 브라우저의 6단계 진도와 XP가 모두 지워져요.<br>일기와 허브 즐겨찾기에는 영향을 주지 않아요.</p><div class="dialog-actions"><button class="secondary-button" id="cancel-reset" type="button" autofocus>취소</button><button class="primary-button" id="confirm-reset" type="button">진도 지우기</button></div></dialog>
+</body>
+</html>
